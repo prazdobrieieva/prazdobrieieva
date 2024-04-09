@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Восьмий клас</title>
+    <style>
+        body {
+            font-family: 'Libre Baskerville', serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('lyceum.jpg'); /* Фонове зображення */
+            background-size: cover;
+            background-position: center;
+            color: #655247; /* Колір тексту */
+            font-size: 20px;
+        }
+
+        .menu {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #655247;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 9999;
+            text-align: center;
+            border-bottom: 4px solid #ADC177;
+        }
+
+        .menu li {
+            display: inline-block;
+        }
+
+        .menu li a {
+            display: block;
+            color: #F1E9C9;
+            text-align: center;
+            padding: 18px 20px;
+            text-decoration: none;
+            font-size: 22px;
+        }
+
+        .menu li a:hover {
+            background-color: #ADC177;
+            color: #655247;
+        }
+
+        .content {
+            text-align: center;
+            margin-top: 120px; /* Відступ від верхнього краю сторінки */
+        }
+
+        .content h1 {
+            font-size: 36px; /* Збільшуємо розмір тексту */
+            color: #655247; /* Колір тексту */
+            display: inline-block; /* Додаємо блочний елемент для рамки */
+            padding: 10px 20px; /* Відступи від тексту */
+            border: 2px solid #ADC177; /* Рамка */
+            border-radius: 10px; /* Радіус кутів рамки */
+            background-color: rgba(255, 255, 255, 0.8); /* Заливка рамки */
+        }
+
+        .photo-container {
+            margin: 0 auto; /* Центрування контейнера */
+            width: 70%; /* Ширина контейнера */
+            position: relative; /* Позиція контейнера для абсолютного позиціонування стрілок */
+        }
+
+        .photo {
+            margin: 0 auto; /* Центрування фотографії */
+            border: 5px solid #ADC177; /* Додали рамку */
+            border-radius: 10px;
+            max-width: 100%; /* Змінили ширину фото на 100% відносно батьківського контейнера */
+            height: auto;
+            display: none; /* Початково приховуємо всі фотографії */
+        }
+
+        .photo.active {
+            display: block; /* Показуємо активну фотографію */
+        }
+
+        .arrow {
+            font-size: 40px; /* Збільшуємо розмір стрілок */
+            cursor: pointer;
+            color: #655247;
+            position: absolute; /* Абсолютне позиціонування стрілок */
+            top: 50%; /* Позиціонування стрілок по вертикалі на середині фото */
+            transform: translateY(-50%); /* Сміщення стрілок по вертикалі на половину їх висоти вгору */
+        }
+
+        .arrow.left {
+            left: 10px; /* Позиціонування лівої стрілки */
+        }
+
+        .arrow.right {
+            right: 10px; /* Позиціонування правої стрілки */
+        }
+    </style>
+</head>
+<body>
+    <ul class="menu">	
+	<li><a href="index.html">Головна сторінка</a></li>
+        <li><a href="восьмий клас.html">Восьмий клас</a></li>
+        <li><a href="дев'ятий клас.html">Дев'ятий клас</a></li>
+        <li><a href="десятий клас.html">Десятий клас</a></li>
+        <li><a href="одинадцятий клас.html">Одинадцятий клас</a></li>
+    </ul>
+    <div class="content">
+        <h1>Було дещо нелегко адаптуватися у ліцеї, багатьох відрахували, але ми вистояли.</h1>
+        <div class="photo-container">
+            <img src="восьмий клас 1.jpg" alt="fotka1" class="photo active">
+            <img src="восьмий клас 2.jpg" alt="fotka2" class="photo">
+            <img src="восьмий клас 3.jpg" alt="fotka3" class="photo">
+        </div>
+        <span class="arrow left" onclick="prevPhoto()">&#10094;</span>
+        <span class="arrow right" onclick="nextPhoto()">&#10095;</span>
+    </div>
+
+    <script>
+        var currentPhoto = 0;
+        var photos = document.getElementsByClassName("photo");
+
+        function showPhoto(n) {
+            for (var i = 0; i < photos.length; i++) {
+                photos[i].classList.remove("active");
+            }
+            photos[n].classList.add("active");
+        }
+
+        function nextPhoto() {
+            currentPhoto = (currentPhoto + 1) % photos.length;
+            showPhoto(currentPhoto);
+        }
+
+        function prevPhoto() {
+            currentPhoto = (currentPhoto - 1 + photos.length) % photos.length;
+            showPhoto(currentPhoto);
+        }
+    </script>
+</body>
+</html>
+

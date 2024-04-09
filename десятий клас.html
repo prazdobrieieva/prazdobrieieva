@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Десятий клас</title>
+    <style>
+        body {
+            font-family: 'Libre Baskerville', serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('lyceum.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #655247;
+            font-size: 20px;
+        }
+
+        .menu {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #655247;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 9999;
+            text-align: center;
+            border-bottom: 4px solid #ADC177;
+        }
+
+        .menu li {
+            display: inline-block;
+        }
+
+        .menu li a {
+            display: block;
+            color: #F1E9C9;
+            text-align: center;
+            padding: 18px 20px;
+            text-decoration: none;
+            font-size: 22px;
+        }
+
+        .menu li a:hover {
+            background-color: #ADC177;
+            color: #655247;
+        }
+
+        .content {
+            text-align: center;
+            margin-top: 120px; 
+        }
+
+        .content h1 {
+            font-size: 36px; 
+            color: #655247; 
+            display: inline-block;
+            padding: 10px 20px;
+            border: 2px solid #ADC177;
+            border-radius: 10px; 
+            background-color: rgba(255, 255, 255, 0.8); 
+        }
+
+        .photo-container {
+            margin: 0 auto; 
+            width: 70%; 
+            position: relative;
+        }
+
+        .photo {
+            margin: 0 auto; 
+            border: 5px solid #ADC177; 
+            border-radius: 10px;
+            max-width: 100%; 
+            height: auto;
+            display: none;
+        }
+
+        .photo.active {
+            display: block;
+        }
+
+        .arrow {
+            font-size: 40px;
+            cursor: pointer;
+            color: #655247;
+            position: absolute;
+            top: 50%; 
+            transform: translateY(-50%); 
+        }
+
+        .arrow.left {
+            left: 10px; 
+        }
+
+        .arrow.right {
+            right: 10px; 
+        }
+    </style>
+</head>
+<body>
+    <ul class="menu">	
+	<li><a href="index.html">Головна сторінка</a></li>
+        <li><a href="восьмий клас.html">Восьмий клас</a></li>
+        <li><a href="дев'ятий клас.html">Дев'ятий клас</a></li>
+        <li><a href="десятий клас.html">Десятий клас</a></li>
+        <li><a href="одинадцятий клас.html">Одинадцятий клас</a></li>
+    </ul>
+    <div class="content">
+        <h1>Переважно сиділи на дистанційці, але намагались підтримувати контакт і продовжувати навчатись.</h1>
+        <div class="photo-container">
+            <img src="десятий клас 1.jpg" alt="fotka1" class="photo active">
+            <img src="десятий клас 2.jpg" alt="fotka2" class="photo">
+            <img src="десятий клас 3.jpg" alt="fotka3" class="photo">
+        </div>
+        <span class="arrow left" onclick="prevPhoto()">&#10094;</span>
+        <span class="arrow right" onclick="nextPhoto()">&#10095;</span>
+    </div>
+
+    <script>
+        var currentPhoto = 0;
+        var photos = document.getElementsByClassName("photo");
+
+        function showPhoto(n) {
+            for (var i = 0; i < photos.length; i++) {
+                photos[i].classList.remove("active");
+            }
+            photos[n].classList.add("active");
+        }
+
+        function nextPhoto() {
+            currentPhoto = (currentPhoto + 1) % photos.length;
+            showPhoto(currentPhoto);
+        }
+
+        function prevPhoto() {
+            currentPhoto = (currentPhoto - 1 + photos.length) % photos.length;
+            showPhoto(currentPhoto);
+        }
+    </script>
+</body>
+</html>
